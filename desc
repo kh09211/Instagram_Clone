@@ -1,0 +1,10 @@
+Coronagram is a social media platform I created while in quarantine. The website is functionally similar to the Instagram site. Users are able to register, login, create and edit profiles, create post with captions and photos, comment on posts, follow other users, and be followed by other users. The project uses the Laravel PHP framework for the back end, Vue.js Javascript framework for the front end, and SQLite for the relational database. Other technologies used in the project are Bootstrap 4, Axios, Webpack.js, Node.js, and NPM.
+
+todo
+
+--when profile created go to profile page
+--dropdown link to My Profile
+--Dropdown link to Following
+--Dropdownlink to Everyone default /
+--footer to all pages
+comments on photos

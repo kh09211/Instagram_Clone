@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'username', 'password',
     ];
 
     /**
@@ -36,4 +36,31 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    protected static function boot() {
+        parent::boot(); 
+
+        static::created(function ($user) {
+            $user->profile()->create([
+                'title' => $user->username,
+            ]);
+        });
+    }
+
+    // in laravel inks the profile object to this User object like a foreign key - note hasOne()
+    public function profile() {
+        return $this->hasOne(Profile::class);
+    }
+
+    // in laravel inks the post object to this User object like a foreign key - note hasMany()
+    // DESC orders the object by created_at index
+    public function posts() {
+        return $this->hasMany(Post::class)->orderBy('created_at','DESC');
+    }
+
+    // links profiles being folowed to users
+    public function following() {
+        return $this->belongsToMany(Profile::class);
+    }
 }

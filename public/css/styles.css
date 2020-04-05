@@ -1,0 +1,19 @@
+.lobster {
+    font-family: 'Lobster Two';
+}
+#postphoto {
+	max-width:200px;
+	padding-top: 50px;
+}
+#postname {
+	padding-top: 50px;
+}
+@media only screen and (max-width: 700px) {
+	#postphoto {
+		max-width: 150px;
+		padding-top: 10px;
+	}
+	#postname {
+		padding-top: 10px;
+	}
+}
