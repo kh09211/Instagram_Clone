@@ -37,7 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    // this function creates a basic title when the user is created, by firing
     protected static function boot() {
         parent::boot(); 
 
@@ -62,5 +62,9 @@ class User extends Authenticatable
     // links profiles being folowed to users
     public function following() {
         return $this->belongsToMany(Profile::class);
+    }
+
+    public function comment() {
+        return $this->hasMany(Comment::class);
     }
 }

@@ -36,6 +36,9 @@ Route::get('/', 'PostsController@index');
 // route for showing the post of the followers the user is following
 Route::get('/following', 'PostsController@indexFollowing');
 
+// route for the post comments
+route::post('/comment/{post}', 'CommentsController@store');
+
 // Route for creating posts
 Route::get('/p/create', 'PostsController@create');
 
@@ -45,5 +48,5 @@ Route::get('/p/{post}', 'PostsController@show');
 // Route for inserting the data using the database model
 Route::post('/p', 'PostsController@store');
 
-// Post Route for axios call
+// Post Route for followers axios call
 Route::post('/follow/{user}', 'FollowsController@store');

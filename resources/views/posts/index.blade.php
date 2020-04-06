@@ -22,6 +22,9 @@
                         <a href="/profile/{{ $post->user->id }}" class="text-dark">{{ $post->user->username }}</a>
                     </span> 
                     {{ $post->caption }}
+                    <br/>
+                    <span style="font-size: 14px" class="mb-2">Comments ({{ $post->comment()->count() }})
+                    </span>
                 </p>
             </div>
         </div>
