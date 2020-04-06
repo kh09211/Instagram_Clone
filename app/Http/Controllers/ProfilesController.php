@@ -56,7 +56,9 @@ class ProfilesController extends Controller
     			// this function uploads the image only if the user has uploaded a new image
    			$imagePath = request('image')->store('profile','public');
     		// resize the image into a square then save it
-	        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+	        $image = Image::make(public_path("storage/{$imagePath}"));
+            $image->orientate();
+            $image->fit(1000, 1000);
 	        $image->save();
 
 	    	// As an added layer of protection, this only allows the authenticated user to update the data, though without the auth()->, it still updates through the model. note. array_merge makes image as the path, not the giant array full of data AKA the $data array has an image but the 2nd array overrides that data

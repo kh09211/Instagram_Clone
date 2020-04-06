@@ -45,7 +45,9 @@ class PostsController extends Controller
     	$imagePath = request('image')->store('uploads','public');
 
         // resize the image into a square then save it
-        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 900);
+        $image = Image::make(public_path("storage/{$imagePath}"));
+        $image->orientate();
+        $image->fit(1200, 900);
         $image->save();
 
     	auth()->user()->posts()->create([
