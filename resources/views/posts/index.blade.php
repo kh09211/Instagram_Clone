@@ -4,7 +4,11 @@
 
 <div class="container">
     @if (count($posts) == 0)
-        <h3 class="text-center pt-3">You are not following anyone yet</h3>
+        <div class="row justify-content-center pt-3">
+            <div class="col-md">
+                <h3 class="text-center pt-1">You are not following anyone yet</h3>
+            </div>
+        </div>
     @endif
 
     @foreach($posts as $post)

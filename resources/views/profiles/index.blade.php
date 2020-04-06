@@ -42,7 +42,11 @@
     <hr>
     <div class="row justify-content-center pt-5">
         @if (count($user->posts) == 0)
-            <h3>You have not added and post yet</h3>
+            <div class="row justify-content-center pt-3">
+                <div class="col-md">
+                    <h3 class="text-center pt-1">You have not added any post.</h3>
+                </div>
+            </div>
         @endif
 
         @foreach($user->posts as $post)

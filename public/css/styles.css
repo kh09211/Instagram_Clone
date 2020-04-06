@@ -30,4 +30,22 @@
     }
 }
 
+@media (max-width: 992px) {
+    .dropdown-toggle {
+        display: none;
+    }
+
+    .dropdown-menu {
+        display: block;
+        position: relative;
+        border-width: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    .dropdown-item {
+        padding: .5rem 0rem;
+        color: rgba(0,0,0,.5);
+    }
+}
 
