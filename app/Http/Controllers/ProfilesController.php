@@ -22,6 +22,7 @@ class ProfilesController extends Controller
         // ));
 
         // variable needed for the follow button's status. passes boolian for if the user's profile is being followed by the authenticated user
+
         $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
             
 
@@ -49,7 +50,7 @@ class ProfilesController extends Controller
     		'title' => 'required',
     		'description' => 'required',
     		'url' => '',
-    		'image' => ''
+    		'image' => 'image'
     	]);
 
     	if (request('image')) {

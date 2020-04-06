@@ -10,3 +10,4 @@ todo
 --comments on photos
 finish the following pagination
 configure the mailserver in .env
+fix comment orientation to show oldest posts first.

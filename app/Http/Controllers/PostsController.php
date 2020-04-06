@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 Use \App\Post;
+Use \App\User;
 
 class PostsController extends Controller
 {
@@ -18,7 +19,8 @@ class PostsController extends Controller
         // $users = auth()->user()->following()->pluck('profiles.user_id');
         // $posts = Post::whereIn('user_id', $users)->latest()->get();
 
-        $posts = Post::latest()->paginate(5);
+        // The posts being sent to the page and then paginated
+        $posts = Post::latest()->paginate(10);
         
         return view('posts/index', compact('posts'));
     }
@@ -59,9 +61,13 @@ class PostsController extends Controller
     }
 
     // laravel post model binding to fetch the post
-    public function show(\App\Post $post) {
+    public function show(\App\Post $post,User $user) {
+        
+        // variable needed for the follow button's status. passes boolian for if the user's profile is being followed by the authenticated user
+        
+        $follows = (auth()->user()) ? auth()->user()->following->contains($post->user->id) : false;
         
         // compct is to replace an array of data sent to the view
-        return view('posts.show', compact('post'));
+        return view('posts.show', compact('post', 'user', 'follows'));
     }
 }

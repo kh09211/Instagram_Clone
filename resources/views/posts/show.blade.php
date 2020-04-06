@@ -16,7 +16,7 @@
                 <div>
                     <div class="font-weight-bold d-flex h5">
                         <a href="/profile/{{ $post->user->id }}" class="text-dark mt-1">{{ $post->user->username }}</a>
-                        <follow-button user-id="{{ $post->user->id }}" follows="{{ $post->user->profile->follows }}"></follow-button>
+                        <follow-button user-id="{{ $post->user->id }}" follows="{{ $follows }}"></follow-button>
                     </div>
                 </div>
             </div>
