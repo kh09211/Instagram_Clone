@@ -11,7 +11,7 @@ class Profile extends Model
 		if (isset($this->image)) {
 			return '/storage/' . ($this->image);
 		} else {
-			return '/storage/profile/YZWZv7CkPQNEZgT2kH9ipvxBjx9r9sxpV0nL38J8.jpeg';
+			return '/photos/no-photo.jpg';
 		}
 	}
 
