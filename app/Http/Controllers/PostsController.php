@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 Use \App\Post;
 Use \App\User;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -66,8 +67,17 @@ class PostsController extends Controller
         // variable needed for the follow button's status. passes boolian for if the user's profile is being followed by the authenticated user
         
         $follows = (auth()->user()) ? auth()->user()->following->contains($post->user->id) : false;
-        
+
         // compct is to replace an array of data sent to the view
         return view('posts.show', compact('post', 'user', 'follows'));
+    }
+
+    public function destroy(\App\Post $post) {
+        
+        // function deletes the uploaded photo and then the entire post
+        Storage::delete('public/' . $post->image);
+        Post::destroy($post->id);
+
+        return redirect('/profile/' . $post->user->id);
     }
 }

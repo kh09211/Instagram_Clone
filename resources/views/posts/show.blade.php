@@ -16,7 +16,17 @@
                 <div>
                     <div class="font-weight-bold d-flex h5">
                         <a href="/profile/{{ $post->user->id }}" class="text-dark mt-1">{{ $post->user->username }}</a>
+
+                        {{-- Show delete button if authorized by policy otherwise show follow --}}
+                        @can ('update', $post->user->profile)
+                            <form action="/p/{{ $post->id }}" method="POST">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-primary ml-4" style="height: 25px; padding-bottom: 30px;">Delete Post</button>
+                            </form>
+                        @else
                         <follow-button user-id="{{ $post->user->id }}" follows="{{ $follows }}"></follow-button>
+                        @endcan
                     </div>
                 </div>
             </div>
@@ -27,6 +37,8 @@
                 </span>
                 {{ $post->caption }}
             </p>
+            
+
 
 
             <form action="/comment/{{ $post->id }}" enctype="multipart/form-data" method="post">

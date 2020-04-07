@@ -45,6 +45,9 @@ Route::get('/p/create', 'PostsController@create');
 // route for showing individual posts
 Route::get('/p/{post}', 'PostsController@show');
 
+// route for deleting posts
+Route::delete('/p/{post}', 'PostsController@destroy')->name('post.destroy');
+
 // Route for inserting the data using the database model
 Route::post('/p', 'PostsController@store');
 
